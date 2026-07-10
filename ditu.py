@@ -1,17 +1,17 @@
-import tkinter as tk
-from tkinter import ttk
-import numpy as np
-import cv2
-from PIL import Image, ImageTk
-import webbrowser
-import threading
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from socketserver import ThreadingMixIn
-import json
-import time
-import socket
-import urllib.request
-import math
+导入 tkinter 作为 tk
+从 tkinter 导入 ttk
+import numpy 作为 np
+导入 cv2
+从 PIL 导入 Image, ImageTk
+导入 webbrowser
+导入 threading
+从 http.server 导入 HTTPServer, BaseHTTPRequestHandler
+从socketserver 导入ThreadingMixIn
+导入 json
+导入 time
+导入 socket
+导入 urllib.request
+导入 math
 
 # --- 全局状态变量 ---
 drone_state = {"lat": 34.334015, "lon": 108.99611, "height": 100.0, "pitch": -45.0}
@@ -34,23 +34,23 @@ MAP_HTML = """
         }
     </style>
     <!-- 引入高德地图 JS API -->
-    <script src="https://webapi.amap.com/maps?v=2.0&key=c57677872b12b44c2c6ebf7fe2c2c9b3&plugin=AMap.MouseTool"></script>
-</head>
+&lt;b&gt;    &lt;script src=&quot;https:&#x2F;&#x2F;webapi.amap.com&#x2F;maps?v=2.0&amp;key=yourkey&amp;plugin=AMap.MouseTool&quot;&gt;&lt;&#x2F;script&gt;&lt;&#x2F;b&gt;
+
 <body>
     <div id="container"></div>
     <script>
         // 1. 初始化地图
         var map = new AMap.Map('container', {
             zoom: 16,
-            center: [121.4737, 31.2304],
-            viewMode: '2D'
+            中心：[121.4737, 31.2304],
+            视图模式：'2D'
         });
 
         // 2. 初始化无人机标记和任务区域多边形
         window.droneMarker = new AMap.Marker({
             map: map,
-            zIndex: 110,
-            icon: "https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png"
+            z-index: 110,
+            图标: "https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png"
         });
         
         window.taskPolygon = new AMap.Polygon({
